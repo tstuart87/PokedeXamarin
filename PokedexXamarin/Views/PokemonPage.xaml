@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+    
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PokedexXamarin.Views.PokemonPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="PokedeXamarin"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+            
+            <Entry 
+                x:Name="SearchBoxInputField"
+                Text=""
+                Placeholder="Search Pokemon by Name"
+                Completed="HandleEnterPress" />
+
+            <StackLayout
+                x:Name="PokeBox"
+                >
+            </StackLayout>
+
+            <StackLayout
+                x:Name="PokeImage"
+                >
+            </StackLayout>
+
+            <Grid
+                x:Name="PokeGrid"
+                >
+                
+            </Grid>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+    
+    

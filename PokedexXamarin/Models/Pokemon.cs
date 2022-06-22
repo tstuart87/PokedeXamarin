@@ -1,0 +1,26 @@
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace PokedexXamarin.Models
+{
+
+    public class Pokemon
+    {
+        [JsonProperty("id")]
+        public int Id { get; set; }
+        [JsonProperty("name")]
+        public string Name { get; set; }
+        [JsonProperty("weight")]
+        public int Weight { get; set; }
+        [JsonProperty("height")]
+        public int Height { get; set; }
+        [JsonProperty("base_experience")]
+        public int Experience { get; set; }
+        [JsonProperty("order")]
+        public int Order { get; set; }
+        public string Ability { get; set; }
+        public string ImageURL { get; set; }
+    }
+}
