@@ -17,10 +17,9 @@ namespace PokedexXamarin.Services
             _httpClient = httpClient;
         }
 
-        public async Task<Pokemon> GetPokemonAsync(string name)
+        public async Task<Pokemon2> GetPokemonAsync(string name)
         {
-            Pokemon2 result = JsonConvert.DeserializeObject<Pokemon2>(await _httpClient.GetStringAsync($"https://pokeapi.co/api/v2/pokemon/{name}"));
-            result.ImageURL = $"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{result.Id}.png";
+            Pokemon2 result = JsonConvert.DeserializeObject<Pokemon2>(await _httpClient.GetStringAsync($"https://pokeapi.co/api/v2/pokemon/{name.ToLower()}"));
 
             return result;
         }

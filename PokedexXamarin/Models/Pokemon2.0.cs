@@ -68,7 +68,7 @@ namespace PokedexXamarin.Models
     public partial class DreamWorld
     {
         [JsonProperty("front_default")]
-        public Uri FrontDefault { get; set; }
+        public string FrontDefault { get; set; }
 
         [JsonProperty("front_female")]
         public object FrontFemale { get; set; }

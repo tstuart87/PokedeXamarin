@@ -12,7 +12,8 @@ namespace PokedexXamarin.ViewModels
         public int Height { get; set; }
         public int Experience { get; set; }
         public int Order { get; set; }
-        public string ImageURL { get; set; }
-        public string Ability { get; set; }
+        public Uri ImageURL { get; set; }
+        public string Move { get; set; }
+        public string Type { get; set; }
     }
 }

@@ -2,37 +2,113 @@
     
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PokedexXamarin.Views.PokemonPage">
+             x:Class="PokedexXamarin.Views.PokemonPage"
+             >
+    
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="PokedeXamarin"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" />
-            
-            <Entry 
-                x:Name="SearchBoxInputField"
-                Text=""
-                Placeholder="Search Pokemon by Name"
-                Completed="HandleEnterPress" />
+        <Grid
+            RowDefinitions="43,270,80,*,*,*"
+            ColumnDefinitions="*,*,*,*"
+            Margin="4">
 
             <StackLayout
-                x:Name="PokeBox"
+                x:Name="PokeName"
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="4"
+                BackgroundColor="Green"
                 >
+                
             </StackLayout>
 
             <StackLayout
                 x:Name="PokeImage"
-                >
-            </StackLayout>
-
-            <Grid
-                x:Name="PokeGrid"
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="4"
+                BackgroundColor="Yellow"
                 >
                 
-            </Grid>
+            </StackLayout>
+
+            <StackLayout
+                x:Name="PokePhysicalStats"
+                Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                BackgroundColor="Blue">
+
+            </StackLayout>
+
+            <StackLayout
+                x:Name="PokeMoveTypeStats"
+                Grid.Row="2"
+                Grid.Column="2"
+                Grid.ColumnSpan="2"
+                BackgroundColor="Purple">
+
+            </StackLayout>
             
-        </StackLayout>
+            <!--Row 3-->
+            <Button
+                Text="PREV"
+                Grid.Row="3"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                BackgroundColor="Red"
+                Clicked="FetchPrevPokemon"/>
+
+            <Button
+                Text="NEXT"
+                Grid.Row="3"
+                Grid.Column="2"
+                Grid.ColumnSpan="2"
+                BackgroundColor="Red"
+                Clicked="FetchNextPokemon"/>
+            
+            <!--Row 4-->
+            <Button
+                Text="RANDOM"
+                FontSize="Large"
+                Grid.Row="4"
+                Grid.RowSpan="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="4"
+                BackgroundColor="Red"
+                Clicked="FetchRandomPokemon"
+                />
+
+            <!--Row 5-->
+            <Entry 
+                x:Name="SearchBoxInputField"
+                Text=""
+                Grid.Row="5"
+                Grid.RowSpan="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                FontSize="Large"
+                Placeholder="Search Pokemon...."
+                Margin="0"
+                Completed="FetchPokemon" />
+            
+            <Button
+                Text="Search"
+                Grid.Row="5"
+                Grid.RowSpan="1"
+                Grid.Column="3"
+                BackgroundColor="Red"
+                Clicked="FetchPokemon"/>
+                
+
+            <Label
+                x:Name="HiddenValues"
+                IsVisible="false"
+                Text=""/>
+
+        </Grid>
+
     </ContentPage.Content>
+    
 </ContentPage>
     
     
