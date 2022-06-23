@@ -10,13 +10,23 @@
             RowDefinitions="43,270,80,*,*,*"
             ColumnDefinitions="*,*,*,*"
             Margin="4">
-
+            
+            <StackLayout
+                x:Name="PokeId"
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="1"
+                BackgroundColor="Black"
+                >
+                
+            </StackLayout>
+            
             <StackLayout
                 x:Name="PokeName"
                 Grid.Row="0"
-                Grid.Column="0"
-                Grid.ColumnSpan="4"
-                BackgroundColor="Green"
+                Grid.Column="1"
+                Grid.ColumnSpan="3"
+                BackgroundColor="DarkRed"
                 >
                 
             </StackLayout>
@@ -26,7 +36,7 @@
                 Grid.Row="1"
                 Grid.Column="0"
                 Grid.ColumnSpan="4"
-                BackgroundColor="Yellow"
+                BackgroundColor="LightCoral"
                 >
                 
             </StackLayout>
@@ -36,7 +46,7 @@
                 Grid.Row="2"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
-                BackgroundColor="Blue">
+                BackgroundColor="DarkRed">
 
             </StackLayout>
 
@@ -45,7 +55,7 @@
                 Grid.Row="2"
                 Grid.Column="2"
                 Grid.ColumnSpan="2"
-                BackgroundColor="Purple">
+                BackgroundColor="DarkRed">
 
             </StackLayout>
             

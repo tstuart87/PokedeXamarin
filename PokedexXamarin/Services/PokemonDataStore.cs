@@ -24,10 +24,17 @@ namespace PokedexXamarin.Services
             return result;
         }
 
-        public Task<IEnumerable<Pokemon>> GetAllPokemonAsync(bool forceRefresh = false)
+        public async Task<IEnumerable<Pokemon2>> GetAllPokemonAsync(bool forceRefresh = false)
         {
-            throw new NotImplementedException();
-        }
+            List<Pokemon2> _pokemons = new List<Pokemon2>();
 
+            for (int i = 0; i <= 151; i++)
+            {
+                Pokemon2 pokemon = await GetPokemonAsync(i.ToString());
+                _pokemons.Add(pokemon);
+            }
+
+            return _pokemons;
+        }
     }
 }

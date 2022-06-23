@@ -14,7 +14,9 @@ namespace PokedexXamarin
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
+            //MainPage = new Views.PokemonListPage();
             MainPage = new AppShell();
+
         }
 
         protected override void OnStart()

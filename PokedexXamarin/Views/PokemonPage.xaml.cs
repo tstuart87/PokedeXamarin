@@ -65,11 +65,13 @@ namespace PokedexXamarin.Views
             Image pokeImage = CreatePokemonImage(pokemon);
             Label pokePhysicalStats = CreatePhysicalStatsLabel(pokemon);
             Label pokeMoveTypeStats = CreateMoveTypeLabel(pokemon);
+            Label pokeIdLabel = CreateIdLabel(pokemon);
 
             ClearContent();
 
             HiddenValues.Text = pokemon.Id.ToString();
             PokeName.Children.Add(pokeName);
+            PokeId.Children.Add(pokeIdLabel);
             PokeImage.Children.Add(pokeImage);
             PokePhysicalStats.Children.Add(pokePhysicalStats);
             PokeMoveTypeStats.Children.Add(pokeMoveTypeStats);
@@ -99,11 +101,28 @@ namespace PokedexXamarin.Views
         {
             Label pokeLabel = new Label
             {
-                Text = pokemon.Name,
+                Text = pokemon.Name + " ",
                 TextTransform = TextTransform.Uppercase,
-                HorizontalOptions = LayoutOptions.Start,
+                HorizontalOptions = LayoutOptions.End,
                 VerticalTextAlignment = TextAlignment.Center,
                 FontSize = 30,
+                TextColor = Color.LightCoral,
+                FontAttributes = FontAttributes.Bold
+            };
+
+            return pokeLabel;
+        }
+
+        private Label CreateIdLabel(PokemonViewModel pokemon)
+        {
+            Label pokeLabel = new Label
+            {
+                Text = $"#{pokemon.Id}",
+                HorizontalOptions = LayoutOptions.Center,
+                //VerticalTextAlignment = TextAlignment.Center,
+                Padding = 3,
+                FontSize = 27,
+                TextColor = Color.White,
                 FontAttributes = FontAttributes.Bold
             };
 
@@ -160,6 +179,7 @@ namespace PokedexXamarin.Views
             PokeImage.Children.Clear();
             PokePhysicalStats.Children.Clear();
             PokeMoveTypeStats.Children.Clear();
+            PokeId.Children.Clear();
         }
     }
 }

@@ -87,6 +87,11 @@
     <FlyoutItem Title="Browse" Icon="icon_feed.png">
         <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
     </FlyoutItem>-->
+    
+    <FlyoutItem Title="List View" Icon="pokeball.png">
+        <ShellContent Route="PokemonListPage" ContentTemplate="{DataTemplate local:PokemonListPage}" />
+    </FlyoutItem>
+    
     <FlyoutItem Title="Pokedex" Icon="pokeball.png">
         <ShellContent Route="PokemonPage" ContentTemplate="{DataTemplate local:PokemonPage}" />
     </FlyoutItem>
