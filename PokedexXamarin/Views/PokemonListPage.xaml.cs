@@ -18,6 +18,7 @@ namespace PokedexXamarin.Views
         static HttpClient httpClient = new HttpClient();
         private readonly PokemonDataStore _pokeDataStore = new PokemonDataStore(httpClient);
 
+
         public PokemonListPage()
         {
             InitializeComponent();
@@ -26,27 +27,29 @@ namespace PokedexXamarin.Views
 
         public async void ListAllPokemon()
         {
-            IEnumerable<PokemonViewModel> fetchedPokemons = await GetAllPokemons();
+            List<PokemonViewModel> fetchedPokemons = await GetAllPokemons();
+            Dictionary<string, Image> _pokemonDict = CreateNameAndImageXamlElements(fetchedPokemons);
 
-            DisplayAllPokemon(fetchedPokemons);
+            DisplayAllPokemon(_pokemonDict);
         }
 
-        private void DisplayAllPokemon(IEnumerable<PokemonViewModel> fetchedPokemons)
+        private void DisplayAllPokemon(Dictionary<string, Image> _pokemonDict)
         {
-            foreach(PokemonViewModel pokemon in fetchedPokemons)
+            foreach(KeyValuePair<string, Image> pokemon in _pokemonDict)
             {
-                Label pokeName = CreatePokemonNameLabel(pokemon);
+                Label pokeName = CreatePokemonNameLabel(pokemon.Key);
 
                 PokeScrollView.Children.Add(pokeName);
+                PokeScrollView.Children.Add(pokemon.Value);
             }
         }
 
         private async Task<List<PokemonViewModel>> GetAllPokemons()
         {
-            IEnumerable<Pokemon2> _allPokemons = await _pokeDataStore.GetAllPokemonAsync(false);
+            IEnumerable<Pokemon> _allPokemons = await _pokeDataStore.GetAllPokemonAsync(false);
             List<PokemonViewModel> _pokemons = new List<PokemonViewModel>();
 
-            foreach (Pokemon2 pokemon in _allPokemons)
+            foreach (Pokemon pokemon in _allPokemons)
             {
                 PokemonViewModel pokeModel = new PokemonViewModel()
                 {
@@ -67,11 +70,29 @@ namespace PokedexXamarin.Views
             return _pokemons;
         }
 
-        private Label CreatePokemonNameLabel(PokemonViewModel pokemon)
+        private Dictionary<string, Image> CreateNameAndImageXamlElements(List<PokemonViewModel> allPokemon)
+        {
+            Dictionary<string, Image> pokeDictionary = new Dictionary<string, Image>();
+
+            foreach(PokemonViewModel pokemon in allPokemon)
+            {
+                Image image = new Image
+                {
+                    Source = pokemon.ImageURL,
+                    Scale = 3.0
+                };
+
+                pokeDictionary.Add(pokemon.Name, image);
+            }
+
+            return pokeDictionary;
+        }
+
+        private Label CreatePokemonNameLabel(string pokemonName)
         {
             Label pokeLabel = new Label
             {
-                Text = pokemon.Name,
+                Text = pokemonName,
                 TextTransform = TextTransform.Uppercase,
                 FontSize = 26,
                 FontAttributes = FontAttributes.Bold

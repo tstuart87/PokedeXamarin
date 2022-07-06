@@ -4,12 +4,14 @@
              x:Class="PokedexXamarin.Views.PokemonListPage">
     <ContentPage.Content>
         
-        <ScrollView>
-            <StackLayout
-                x:Name="PokeScrollView">
+            <ScrollView>
+                <StackLayout
+                    x:Name="PokeScrollView"
+                    >
                 
-            </StackLayout>
-        </ScrollView>
+                </StackLayout>
+            </ScrollView>
         
     </ContentPage.Content>
+
 </ContentPage>

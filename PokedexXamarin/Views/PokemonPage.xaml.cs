@@ -16,7 +16,7 @@ namespace PokedexXamarin.Views
     public partial class PokemonPage : ContentPage
     {
         static HttpClient httpClient = new HttpClient();
-        private readonly PokemonDataStore _pokeDataStore = new PokemonDataStore(httpClient);
+        private static readonly PokemonDataStore _pokeDataStore = new PokemonDataStore(httpClient);
 
         public PokemonPage()
         {
@@ -79,7 +79,7 @@ namespace PokedexXamarin.Views
 
         private async Task<PokemonViewModel> GetNewPokemon(string name)
         {
-            Pokemon2 result = await _pokeDataStore.GetPokemonAsync(name);
+            Pokemon result = await _pokeDataStore.GetPokemonAsync(name);
 
             PokemonViewModel _pokemon = new PokemonViewModel()
             {
@@ -137,6 +137,7 @@ namespace PokedexXamarin.Views
                        $"Weight: {pokemon.Weight}",
                 FontSize = 24,
                 TextColor = Color.White,
+                LineHeight = 1.1,
                 Padding = 5
                 
             };
@@ -148,10 +149,11 @@ namespace PokedexXamarin.Views
         {
             Label pokeLabel = new Label
             {
-                Text = $"Type: {pokemon.Type}\n" +
-                       $"Move: {pokemon.Move}\n" +
+                Text = $"Type: {pokemon.Type.ToUpper()}\n" +
+                       $"Move: {pokemon.Move.ToUpper()}\n" +
                        $"XP: {pokemon.Experience}",
-                FontSize = 18,
+                FontSize = 15,
+                LineHeight = 1.3,
                 Padding = 5,
                 TextColor = Color.White,
                 HorizontalTextAlignment = TextAlignment.End
@@ -180,6 +182,7 @@ namespace PokedexXamarin.Views
             PokePhysicalStats.Children.Clear();
             PokeMoveTypeStats.Children.Clear();
             PokeId.Children.Clear();
+            SearchBoxInputField.Text = "";
         }
     }
 }

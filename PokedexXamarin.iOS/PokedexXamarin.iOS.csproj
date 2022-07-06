@@ -145,4 +145,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\pokeball.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\pokeList.png" />
+  </ItemGroup>
 </Project>

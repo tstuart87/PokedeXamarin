@@ -17,20 +17,20 @@ namespace PokedexXamarin.Services
             _httpClient = httpClient;
         }
 
-        public async Task<Pokemon2> GetPokemonAsync(string name)
+        public async Task<Pokemon> GetPokemonAsync(string name)
         {
-            Pokemon2 result = JsonConvert.DeserializeObject<Pokemon2>(await _httpClient.GetStringAsync($"https://pokeapi.co/api/v2/pokemon/{name.ToLower()}"));
+            Pokemon result = JsonConvert.DeserializeObject<Pokemon>(await _httpClient.GetStringAsync($"https://pokeapi.co/api/v2/pokemon/{name.ToLower()}"));
 
             return result;
         }
 
-        public async Task<IEnumerable<Pokemon2>> GetAllPokemonAsync(bool forceRefresh = false)
+        public async Task<IEnumerable<Pokemon>> GetAllPokemonAsync(bool forceRefresh = false)
         {
-            List<Pokemon2> _pokemons = new List<Pokemon2>();
+            List<Pokemon> _pokemons = new List<Pokemon>();
 
-            for (int i = 0; i <= 151; i++)
+            for (int i = 1; i <= 151; i++)
             {
-                Pokemon2 pokemon = await GetPokemonAsync(i.ToString());
+                Pokemon pokemon = await GetPokemonAsync(i.ToString());
                 _pokemons.Add(pokemon);
             }
 
